@@ -1,0 +1,35 @@
+ball_env:
+  name: hit_ball_v1 # donot change this variable
+  verbose: false
+  episode_length: 400
+  agents:
+    sim_dt: 0.5
+    max_vel_ball: 7.0 # [m/s]
+    max_vel_plank: 3.0 # [m/s]
+    max_acc_line_plank: 1.0 # [m/s^2]
+    max_acc_angle_plank: 0.1 # [rad/s^2]
+    init_ball_vel: 3.0 # [m/s]
+    max_heading_rate: 0.25 # [rad/s]
+    plank_length: 15.0 # [m]
+    bounce_width: 6.0 # [m]
+    ball_radius: 0.0 # [m]
+  env:
+    world_box: [-80, 80, -30, 30] # [m]
+    lose_zone_x: [-60, 60] # [m]
+    mid_zone_x: [-20, 20] # [m]
+  reward:
+    delta_action_coef: 0.000 # 0.002
+    win_coef: 20.0
+    lose_coef: 20.0
+    bounce_ball_coef: 1.0
+    step_coef: 0.00 # 0.02
+    time_discount_coef: 1.0
+  observation: 
+    proprioceptive: ['position', 'orientation', 'velocity', 'bodyrate']
+    exterprioceptive:
+      enemy: ['position', 'orientation']
+      ball: ['position', 'velocity']
+    
+
+
+  

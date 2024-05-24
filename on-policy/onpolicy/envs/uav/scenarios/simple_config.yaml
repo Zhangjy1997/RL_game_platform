@@ -1,0 +1,45 @@
+role: ['pursuer', 'evader']
+
+quadrotor_env:
+  name: multi_quadrotor_env # donot change this variable
+  verbose: false
+  episode_length: 200
+  quadrotor:
+    sim_dt: 0.5 # not used
+    max_t: 10.0 # not used
+    max_vel_evader: 7.0 # [m/s]
+    max_vel_pursuer: 7.0 # [m/s]
+    max_heading_rate_pursuer: 3.14 # [rad/s]
+    max_heading_rate_evader: 3.14 # [rad/s]
+    perception_range: 10000000 # [perception range of pursuers]
+  env:
+    lockdown_zone_radius: 30 # [meters] radius of lockdown area
+    control_zone_radius: 100 # [meters] radius of control area
+    precaution_zone_radius: 200 # [meters] radius of precaution area
+    lower_height: 5 # [meters] lower bound of height for reset
+    upper_height: 100 # [meters] upper bound of height for reset
+    world_box: [-5000, 5000, -5000, 5000, 0, 200]
+  terminal_conditions:
+    min_height: 0.5 #[meters]
+    max_height: 200 #[meters]
+    min_left_fuel: 0.0 # [fuel capacity measured by time 'seconds']
+    min_safe_distance: 1.0 #[meters]
+    min_pursuer_seize_evader_distance: 10.0 # [meters]
+    max_delta_action: 0.3 # maximum dim-wise action change [normalized to [0~1]]
+  reward:
+    delta_action_coef: 0.000
+    safe_distance_coef: 20.0
+    distance_to_terrian_coef: 20.0
+    distance_to_ceiling_coef: 20.0
+    pursuer_move_to_evader_coef: 0.00 # 0.01
+    pursuer_loose_lockdown_zone_coef: 20.0
+    pursuer_seize_evader_coef: 20.0
+    evader_move_to_lockdown_zone_coef: 0.00 # 0.01
+    evader_enter_lockdown_zone_coef: 20.0
+    evader_out_of_precaution_zone_coef: 20.0
+    close_to_lockdown_zone_coef: 1.0
+    all_crash_coef: 20.0
+    step_coef: 0.00 # 0.02
+
+
+  

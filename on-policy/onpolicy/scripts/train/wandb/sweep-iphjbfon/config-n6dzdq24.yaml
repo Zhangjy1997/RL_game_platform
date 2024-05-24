@@ -1,0 +1,20 @@
+wandb_version: 1
+
+attn_size:
+  value: 36
+critic_lr:
+  value: 0.00042050520656315216
+d_k:
+  value: 5
+entropy_coef:
+  value: 0.010383504231908872
+hidden_size:
+  value: 362
+layer_N:
+  value: 3
+lr:
+  value: 0.0005095210244074039
+n_head:
+  value: 5
+use_mixer:
+  value: 'false'

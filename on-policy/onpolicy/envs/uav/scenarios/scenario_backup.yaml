@@ -1,0 +1,30 @@
+role: ['pursuer', 'pursuer','pursuer', 'evader']
+
+observation:
+  pursuer:
+    proprioceptive: ['position', 'orientation', 'velocity', 'bodyrate', 'fuel']
+    exterprioceptive:
+      friend: ['position', 'velocity', 'fuel']
+      enemy: ['position']
+  evader:
+    proprioceptive: ['position', 'orientation', 'velocity', 'bodyrate', 'fuel']
+    exterprioceptive:
+      friend: ['position', 'velocity', 'fuel']
+      enemy: ['position']
+
+reward:
+  pursuer: 
+    sparse: ['pursuer_seize_evader_reward', 'pursuer_loose_lockdown_zone_reward']
+    dense: ['pursuer_move_to_evader_reward']
+  evader: 
+    sparse: ['evader_enter_lockdown_zone_reward', 'evader_out_of_precaution_zone_reward']
+    dense: ['evader_move_to_lockdown_zone_reward']
+  common:
+    sparse: ['approaching_terrian_reward']
+    dense: ['safe_distance_reward', 'action_exceed_limit_reward']
+
+done:
+  pursuer: ['pursuer_seize_evader_done', 'pursuer_loose_lockdown_zone_done']
+  evader: ['evader_enter_lockdown_zone_done', 'evader_out_of_precaution_zone_done']
+  # common: ['safe_distance_done', 'run_out_of_fuel_done', 'approaching_terrian_done']
+  common: ['safe_distance_done', 'approaching_terrian_done', 'approaching_ceiling_done']
